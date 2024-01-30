@@ -1,7 +1,7 @@
 {
   "build": {
-    "beforeBuildCommand": "cargo build --release",
-    "beforeDevCommand": "cargo run",
+    "beforeBuildCommand": "cargo build --release --bin client-backend",
+    "beforeDevCommand": "cargo watch -w src-client-backend/ -x 'run --bin client-backend'",
     "devPath": "http://127.0.0.1:3030",
     "distDir": "../templates"
   },
@@ -21,7 +21,7 @@
         "depends": []
       },
       "externalBin": [],
-      "identifier": "com.tauri.dev",
+      "identifier": "gsl-rs.noahpmay.dev",
       "longDescription": "",
       "macOS": {
         "entitlements": null,

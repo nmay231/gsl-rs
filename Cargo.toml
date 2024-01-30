@@ -1,15 +1,21 @@
-[package]
-name = "gsl-rs"
-version = "0.1.0"
-edition = "2021"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
-[dependencies]
-anyhow = "1.0.79"
-askama = "0.12.1"
-dylib = "0.0.3"
-tauri = "1.5.4"
+# [package]
+# name = "gsl"
+# version = "0.1.0"
+# version.workspace = true
 
 [workspace]
-members = ["src-tauri", "."]
+resolver = "2"
+members = ["src-tauri", "src-client-backend", "src-server", "src-cli"]
+# default-members = ["src-client-backend"]
+
+# [workspace.package]
+# version = "0.1.0"
+# authors = ["Noah May <noahmouse2011@gmail.com>"]
+# edition = "2021"
+# license = "MIT"
+# rust-version = "1.60"
+# publish = false
+
+# [[bin]]
+# name = "server"
+# path = "./src-server/src/main.rs"
