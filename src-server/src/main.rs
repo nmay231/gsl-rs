@@ -19,6 +19,10 @@ fn handle_connection(mut stream: TcpStream) -> Result<(), ()> {
 
     let (status_line, contents) = match request_line.as_str() {
         "GET / HTTP/1.1" => ("HTTP/1.1 200 OK", "hello world!"),
+        "GET /test HTTP/1.1" => (
+            "HTTP/1.1 200 OK",
+            "<div> dynamic content from server!!! </div>",
+        ),
         _ => ("HTTP/1.1 404 NOT FOUND", "uh oh..."),
     };
 

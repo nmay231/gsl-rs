@@ -1,6 +1,6 @@
 [package]
 name = "client"
-description = "This package is mostly configuration for tauri. Look at client-backend"
+description = "The client installed on the user's computer to interact with the game server."
 default-run = "client"
 version = "0.1.0"
 authors = ["Noah May <noahmouse2011@gmail.com>"]
@@ -9,13 +9,6 @@ license = "MIT"
 rust-version = "1.60"
 publish = false
 
-# version.workspace = true
-# authors.worksversion.workspace = true
-# edition.worksversion.workspace = true
-# license.worksversion.workspace = true
-# rust-version.workspace = true
-# publish.worksversion.workspace = true
-
 [build-dependencies]
 tauri-build = { version = "1.5.1", features = [] }
 
@@ -23,6 +16,7 @@ tauri-build = { version = "1.5.1", features = [] }
 serde_json = "^1.0"
 serde = { version = "^1.0", features = ["derive"] }
 tauri = { version = "1.5.4", features = [] }
+reqwest = { version = "0.11.24", features = ["blocking", "json"] }
 
 [features]
 # this feature is used for production builds or when `devPath` points to the filesystem and the built-in dev server is disabled.
