@@ -8,11 +8,6 @@ edition = "2021"
 license = "MIT"
 rust-version = "1.60"
 publish = false
-# version.workspace = true
-# authors.worksversion.workspace = true
-# edition.worksversion.workspace = true
-# license.worksversion.workspace = true
-# rust-version.workspace = true
-# publish.worksversion.workspace = true
 
 [dependencies]
+itertools = "0.12.1"

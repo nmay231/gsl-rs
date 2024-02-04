@@ -20,9 +20,36 @@ fn remote_server_get(path: String) -> String {
     response.text().unwrap()
 }
 
+#[tauri::command]
+fn remote_server_post(path: String, params: serde_json::Value) -> String {
+    let client = reqwest::blocking::Client::new();
+    let response = client
+        .post(url_of(&path))
+        .query(params.as_object().unwrap())
+        .send()
+        .unwrap();
+    response.text().unwrap()
+}
+
+#[tauri::command]
+fn post_request() -> String {
+    let client = reqwest::blocking::Client::new();
+    let response = client
+        .post(url_of("/test"))
+        .body("line1\nline2")
+        .send()
+        .unwrap();
+    response.text().unwrap()
+}
+
 fn main() {
     tauri::Builder::default()
-        .invoke_handler(tauri::generate_handler![testing, remote_server_get])
+        .invoke_handler(tauri::generate_handler![
+            testing,
+            remote_server_get,
+            remote_server_post,
+            post_request,
+        ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }

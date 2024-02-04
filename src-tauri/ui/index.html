@@ -39,7 +39,7 @@
         // const { fetch: tauriFetch } = window.__TAURI__.tauri;
 
         const BACKEND_PREFIX = "command:";
-        const REMOTE_SERVER_PREFIX = "server_get:";
+        const REMOTE_SERVER_PREFIX = "server:";
 
         const backendSend = async function (params) {
             // Make readonly properties writable
@@ -59,13 +59,18 @@
             this.dispatchEvent(new ProgressEvent("load"));
         };
 
-        const remoteServerSend = async function () {
+        const remoteServerSend = async function (params) {
             Object.defineProperty(this, "readyState", { writable: true })
             Object.defineProperty(this, "status", { writable: true })
             Object.defineProperty(this, "statusText", { writable: true })
             Object.defineProperty(this, "response", { writable: true })
 
-            this.response = await invoke("remote_server_get", { path: this.path });
+            if (this.verb === "get") {
+                this.response = await invoke("remote_server_get", { path: this.path });
+            } else {
+                const query = new URLSearchParams(params);
+                this.response = await invoke(`remote_server_${this.verb}`, { path: this.path, params: Object.fromEntries(query) });
+            }
             this.readyState = XMLHttpRequest.DONE;
             this.status = 200;
             this.statusText = "OK";
@@ -79,6 +84,7 @@
                 if (path.startsWith(REMOTE_SERVER_PREFIX)) {
                     // Route remote server requests through backend to avoid CORS
                     event.detail.xhr.path = path.slice(REMOTE_SERVER_PREFIX.length);
+                    event.detail.xhr.verb = event.detail.requestConfig.verb.toLowerCase();
                     event.detail.xhr.send = remoteServerSend;
                 } else if (path.startsWith(BACKEND_PREFIX)) {
                     event.detail.xhr.command = path.slice(BACKEND_PREFIX.length);
@@ -89,18 +95,21 @@
     </script>
 </head>
 
-<!-- Not certain if I want attribute inheritance. Seems like more hassle than
-it's worth -->
-
-<body hx-disinherit="*">
+<body>
     <h1>Welcome from Tauri! Testing</h1>
     <div id="test-replace-me"></div>
     <button hx-get="command:testing" hx-trigger="click" hx-target="#test-replace-me" hx-swap="innerHTML">
         command:testing
     </button>
-    <button hx-get="server_get:/test" hx-trigger="click" hx-target="#test-replace-me" hx-swap="innerHTML">
-        server_get:/test
+    <button hx-get="server:/test" hx-trigger="click" hx-target="#test-replace-me" hx-swap="innerHTML">
+        server:/test
     </button>
+
+    <div>
+        <textarea name="text" cols="30" rows="10"></textarea>
+        <button hx-post="server:/test" hx-include="[name='text']" hx-trigger="click" hx-target="#test-replace-me"
+            hx-swap="innerHTML">Echo back list</button>
+    </div>
 
 </body>
 
