@@ -1,0 +1,3 @@
+# `just client` should only watch for file changes in src-client
+src-cli/
+src-server/
