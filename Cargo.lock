@@ -444,24 +444,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "702fc72eb24e5a1e48ce58027a675bc24edd52096d5397d4aea7c6dd9eca0bd1"
 
 [[package]]
-name = "cli"
-version = "0.1.0"
-dependencies = [
- "clap",
-]
-
-[[package]]
-name = "client"
-version = "0.1.0"
-dependencies = [
- "reqwest",
- "serde",
- "serde_json",
- "tauri",
- "tauri-build",
-]
-
-[[package]]
 name = "cocoa"
 version = "0.24.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1290,6 +1272,33 @@ dependencies = [
  "glib-sys",
  "libc",
  "system-deps 6.2.0",
+]
+
+[[package]]
+name = "gsl-cli"
+version = "0.1.0"
+dependencies = [
+ "clap",
+]
+
+[[package]]
+name = "gsl-client"
+version = "0.1.0"
+dependencies = [
+ "reqwest",
+ "serde",
+ "serde_json",
+ "tauri",
+ "tauri-build",
+]
+
+[[package]]
+name = "gsl-server"
+version = "0.1.0"
+dependencies = [
+ "itertools",
+ "salvo",
+ "tokio",
 ]
 
 [[package]]
@@ -3147,15 +3156,6 @@ dependencies = [
  "proc-macro2",
  "quote",
  "syn 1.0.109",
-]
-
-[[package]]
-name = "server"
-version = "0.1.0"
-dependencies = [
- "itertools",
- "salvo",
- "tokio",
 ]
 
 [[package]]
