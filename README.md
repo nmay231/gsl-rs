@@ -16,5 +16,5 @@ And in another terminal, test using the client and/or cli to access the server.
 
 ```
 just client
-just cli
+just cli 'args --or-flags' # Wrap in quotes if more than two pieces
 ```
