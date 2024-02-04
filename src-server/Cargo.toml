@@ -6,8 +6,10 @@ version = "0.1.0"
 authors = ["Noah May <noahmouse2011@gmail.com>"]
 edition = "2021"
 license = "MIT"
-rust-version = "1.60"
+rust-version = "1.75"
 publish = false
 
 [dependencies]
 itertools = "0.12.1"
+salvo = "0.65.2"
+tokio = { version = "1.36.0", features = ["full"] }
