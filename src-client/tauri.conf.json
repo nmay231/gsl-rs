@@ -5,7 +5,7 @@
     "distDir": "./ui"
   },
   "package": {
-    "productName": "gsl-rs",
+    "productName": "gsl-client",
     "version": "0.1.0"
   },
   "tauri": {
@@ -16,11 +16,18 @@
       "active": true,
       "category": "DeveloperTool",
       "copyright": "",
+      "icon": [
+        "icons/32x32.png",
+        "icons/128x128.png",
+        "icons/128x128@2x.png",
+        "icons/icon.icns",
+        "icons/icon.ico"
+      ],
       "deb": {
         "depends": []
       },
       "externalBin": [],
-      "identifier": "gsl-rs.noahpmay.dev",
+      "identifier": "gsl-client.noahpmay.dev",
       "longDescription": "",
       "macOS": {
         "entitlements": null,

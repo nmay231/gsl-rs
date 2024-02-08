@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+    width="1024px"
+    height="1024px"
+    viewBox="0 0 1024 1024">
+    <rect x="0" y="0" width="1024" height="1024" fill="rgba(0, 0, 0, 0)"></rect>
+    <text
+        fill="rgb(0, 128, 185)"
+        style="font-family: Arial;
+    font-size: 450px; font-style: italic; font-weight: bolder; text-anchor:
+    middle; dominant-baseline: central; text-decoration: underline;"
+        x="512"
+        y="512">
+        GSL
+    </text>
+</svg>

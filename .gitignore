@@ -1,2 +1,5 @@
 /target
 /.vscode/
+
+/src-client/icons/*
+/app-icon.png

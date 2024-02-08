@@ -6,3 +6,7 @@ client:
 
 cli ARGS:
     cargo run --bin gsl-cli -- {{ARGS}}
+
+icons:
+    ffmpeg -y -s 1024x1024 -i app-icon.svg app-icon.png
+    cargo tauri icon
