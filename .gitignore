@@ -3,3 +3,7 @@
 
 /src-client/icons/*
 /app-icon.png
+
+/.xwin-cache/
+/dist/*
+!/dist/.gitkeep
