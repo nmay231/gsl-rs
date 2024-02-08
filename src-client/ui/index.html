@@ -4,30 +4,24 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <script src="https://unpkg.com/htmx.org@1.9.10"
-        integrity="sha384-D1Kt99CQMDuVetoL1lrYwg5t+9QdHe7NLX/SoJYkXDFfX37iInKRy5xLSi8nO7UC"
-        crossorigin="anonymous"></script>
-    <script type="module" src="/htmx-middleware.js">
+    <title>Init</title>
+
+    <script type="module">
+        const { invoke } = window.__TAURI__.tauri;
+        const report = await invoke("startup");
+
+        if (report.status === "FreshInstall") {
+            window.location.replace("/fresh-install.html");
+        } else if (report.status === "ConfigExists") {
+            window.location.replace("/connected.html");
+        } else {
+            console.error("Invalid data:", report);
+        }
     </script>
 </head>
 
 <body>
-    <h1>Welcome from Tauri! Testing</h1>
-    <div id="test-replace-me"></div>
-    <button hx-get="command:testing" hx-trigger="click" hx-target="#test-replace-me" hx-swap="innerHTML">
-        command:testing
-    </button>
-    <button hx-get="server:/test" hx-trigger="click" hx-target="#test-replace-me" hx-swap="innerHTML">
-        server:/test
-    </button>
-
-    <div>
-        <textarea name="text" cols="30" rows="10"></textarea>
-        <button hx-post="server:/test" hx-include="[name='text']" hx-trigger="click" hx-target="#test-replace-me"
-            hx-swap="innerHTML">Echo back list</button>
-    </div>
-
+    <span>Loading start up...</span>
 </body>
 
 </html>

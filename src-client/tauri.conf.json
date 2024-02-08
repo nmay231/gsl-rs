@@ -31,7 +31,7 @@
       },
       "resources": [],
       "shortDescription": "",
-      "targets": "all",
+      "targets": ["appimage", "nsis"],
       "windows": {
         "certificateThumbprint": null,
         "digestAlgorithm": "sha256",

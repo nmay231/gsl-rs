@@ -69,6 +69,7 @@ const remoteServerSend = async function (params) {
 
 window.addEventListener("DOMContentLoaded", () => {
     document.body.addEventListener('htmx:beforeSend', (event) => {
+        console.log("listener attached")
         const path = event.detail.requestConfig.path;
         if (path.startsWith(REMOTE_SERVER_PREFIX)) {
             // Route remote server requests through backend to avoid CORS

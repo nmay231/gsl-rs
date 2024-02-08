@@ -13,7 +13,7 @@ async fn hello(res: &mut Response) {
 
 #[handler]
 async fn get_test(res: &mut Response) {
-    res.render(Text::Html("<div>Get /test</div>"));
+    res.render(Text::Html("<div>Get /test, new version 2</div>"));
 }
 
 #[handler]

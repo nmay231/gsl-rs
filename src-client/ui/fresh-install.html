@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fresh Install</title>
+
+</head>
+
+<body>
+    <h3>Initialize client</h3>
+
+    <form id="form">
+        <div>
+            <label for="url">Remote Server</label>
+            <input name="url" type="text" required />
+        </div>
+
+        <button type="submit">Save</button>
+    </form>
+
+    <script>
+        const { invoke } = window.__TAURI__.tauri;
+
+        document.getElementById("form").addEventListener("submit", async (event) => {
+            event.preventDefault();
+            const data = new FormData(event.target);
+            const url = data.get("url");
+            await invoke("write_config", { url });
+            window.location.assign("/");
+        })
+    </script>
+    <!-- <h1>Welcome from Tauri! Testing</h1>
+    <div id="test-replace-me"></div>
+    <button hx-get="command:testing" hx-trigger="click" hx-target="#test-replace-me" hx-swap="innerHTML">
+        command:testing
+    </button>
+    <button hx-get="server:/test" hx-trigger="click" hx-target="#test-replace-me" hx-swap="innerHTML">
+        server:/test
+    </button>
+
+    <div>
+        <textarea name="text" cols="30" rows="10"></textarea>
+        <button hx-post="server:/test" hx-include="[name='text']" hx-trigger="click" hx-target="#test-replace-me"
+            hx-swap="innerHTML">Echo back list</button>
+    </div> -->
+
+</body>
+
+</html>
