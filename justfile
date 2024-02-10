@@ -8,8 +8,8 @@ server:
 client:
     cargo tauri dev # The dev cargo watch command is in tauri.conf.json
 
-cli QUOTED_ARGS:
-    cargo run --bin gsl-cli -- {{QUOTED_ARGS}}
+cli *ARGS:
+    cargo run --bin gsl-cli -- {{ARGS}}
 
 # Release build
 build-all: linux windows
