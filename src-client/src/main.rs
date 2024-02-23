@@ -10,7 +10,7 @@ use config::{Config, ConfigSerialized};
 use data::{ensure_everything_exists, CONFIG};
 use serde::Serialize;
 
-use crate::data::{get_cache_dir, get_config_local_dir};
+use crate::data::get_config_local_dir;
 
 #[tauri::command]
 fn testing() -> &'static str {
@@ -92,7 +92,6 @@ async fn write_config(url: String) {
 
 fn main() -> anyhow::Result<()> {
     ensure_everything_exists()?;
-    println!("{:?}", (get_config_local_dir(), get_cache_dir()));
 
     tauri::Builder::default()
         .invoke_handler(tauri::generate_handler![

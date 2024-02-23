@@ -1,3 +1,4 @@
+use askama::Template;
 use itertools::Itertools;
 use salvo::prelude::*;
 
@@ -27,11 +28,31 @@ async fn post_test(req: &mut Request, res: &mut Response) {
         None => {
             let debug = format!("{:?}", req.queries());
             res.render(Text::Html(format!(
-                "Failed to provide `text` in params<br/>{}",
+                "Failed to provide `text` in query<br/>{}",
                 debug
             )));
         }
     }
+}
+
+#[derive(Template)]
+#[template(path = "startup.html")]
+struct Startup<'render> {
+    servers: Vec<ServerInfo<'render>>,
+}
+
+struct ServerInfo<'render> {
+    name: &'render str,
+}
+
+#[handler]
+fn get_startup(res: &mut Response) {
+    // TODO: Authentication
+    let fake_data = Startup {
+        servers: vec![ServerInfo { name: "ServerU" }, ServerInfo { name: "ATM" }],
+    };
+
+    res.render(Text::Html(fake_data.render().unwrap()))
 }
 
 #[tokio::main]
@@ -39,7 +60,8 @@ async fn main() {
     let router = Router::new()
         .get(root)
         .push(Router::with_path("hello").get(hello))
-        .push(Router::with_path("test").get(get_test).post(post_test));
+        .push(Router::with_path("test").get(get_test).post(post_test))
+        .push(Router::with_path("startup").get(get_startup));
     let acceptor = TcpListener::new("0.0.0.0:4040").bind().await;
 
     // println!("{:?}", router);

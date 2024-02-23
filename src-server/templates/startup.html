@@ -1,0 +1,16 @@
+<ul>
+    {% for server in servers %}
+    <li>Server: {{server.name}}
+
+
+        <!-- {% if true %}
+        <button disabled>Run server</button>
+            
+        {% else %}
+        <button>Run server</button>
+            
+        {% endif %} -->
+    </li>
+    {% endfor %}
+</ul>
+<a hx-get="server:/test" hx-swap="outerHTML" href="#">testing anchors</a>

@@ -14,9 +14,10 @@
 </head>
 
 <body>
-    <div hx-trigger="load" hx-get="server:/test" hx-swap="outerHTML">
-        Loading games...
+    <div hx-trigger="load" hx-get="server:/startup" hx-swap="outerHTML">
+        Loading startup...
     </div>
+    <button onclick="location.reload()">Reload page</button>
 </body>
 
 </html>
