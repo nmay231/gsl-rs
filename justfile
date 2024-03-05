@@ -11,6 +11,9 @@ client:
 cli *ARGS:
     cargo run --bin gsl-cli -- {{ARGS}}
 
+game-wrapper *ARGS:
+    cargo run --bin gsl-game-wrapper -- {{ARGS}}
+
 # Release build
 build-all: linux windows
 
