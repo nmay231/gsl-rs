@@ -1370,10 +1370,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "gsl-game-wrapper"
-version = "0.1.0"
-
-[[package]]
 name = "gsl-server"
 version = "0.1.0"
 dependencies = [
