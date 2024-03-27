@@ -36,7 +36,7 @@ async fn post_test(req: &mut Request, res: &mut Response) {
 }
 
 #[derive(Template)]
-#[template(path = "startup.html")]
+#[template(path = "startup.html.j2")]
 struct Startup<'render> {
     servers: Vec<ServerInfo<'render>>,
 }

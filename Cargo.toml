@@ -1,3 +1,3 @@
 [workspace]
 resolver = "2"
-members = ["src-client", "src-server", "src-cli"]
+members = ["src-cli", "src-client", "src-game-wrapper", "src-server"]

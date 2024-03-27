@@ -12,7 +12,7 @@ enum Message {
     Kill,
 }
 
-fn run_game_wrapper() {
+pub fn run_game_wrapper() {
     let stdin = io::stdin();
     let stdin_queue = Arc::new(Mutex::new(VecDeque::new()));
     // let stdin_queue_thread = Arc::clone(&stdin_queue);
